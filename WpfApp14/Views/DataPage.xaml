@@ -20,22 +20,28 @@
         <StackPanel Orientation="Horizontal"
                    VerticalAlignment="Center"
                    HorizontalAlignment="Center">
-            <TextBlock Text="Найти: " FontSize="16"/>
-            <TextBox Width="300" FontSize="16" x:Name ="textBoxFind"/>
+            <TextBlock Text="Пошук: " FontSize="16"/>
+            <TextBox Width="300" FontSize="16" x:Name ="textBoxFind" TextChanged="textBoxFind_TextChanged"/>
         </StackPanel>
-        <Button Height="20" Width="100" HorizontalAlignment="Left" Margin="20 0 0 0 " Content="Back" Click="Back_btn_click"/>
+        <Button Height="20" Width="100" HorizontalAlignment="Left" Margin="20 0 0 0 " Content="Назад" Click="Back_btn_click"/>
 
 
-        <DataGrid Grid.Row="1" x:Name="UserGrid" AutoGenerateColumns="False">
+        <DataGrid Grid.Row="1" x:Name="UserGrid" AutoGenerateColumns="False" Height="285" VerticalAlignment="Top" SelectionChanged="UserGrid_SelectionChanged">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Id" Width="*" Binding="{Binding Id}"/>
-                <DataGridTextColumn Header="Login" Width="*" Binding="{Binding Login}"/>
-                <DataGridTextColumn Header="Password" Width="*" Binding="{Binding Password}"/>
-                <DataGridTextColumn Header="Roles" Width="*" Binding="{Binding Roles.Names}"/>
+                <DataGridTextColumn Header="ID" Width="*" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="Логін" Width="*" Binding="{Binding Login}"/>
+                <DataGridTextColumn Header="Пароль" Width="*" Binding="{Binding Password}"/>
+                <DataGridTextColumn Header="Роль" Width="*" Binding="{Binding Roles.Names}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="Delete" Click="Delite_btn_click" Margin="350,8,350,0" Grid.Row="2" Height="20" VerticalAlignment="Top"/>
-        <Button Content="Add users" Margin="47,8,653,0" Grid.Row="2" Height="20" VerticalAlignment="Top" Click="Add_Click"/>
-        <Button Content="Зберегти зміни" HorizontalAlignment="Left" Margin="699,8,0,0" Grid.Row="2" VerticalAlignment="Top" RenderTransformOrigin="-0.463,0.017" Width="91" Click="Save_Click"/>
+        <Button Content="Видалити" Click="Delite_btn_click" Margin="350,8,350,0" Grid.Row="2" Height="20" VerticalAlignment="Top"/>
+        <Button Content="Додати коритсувача" Margin="20,8,641,0" Grid.Row="2" Height="20" VerticalAlignment="Top" Click="Add_Click"/>
+        <Button Content="Редагувати" HorizontalAlignment="Left" Margin="675,8,0,0" Grid.Row="2" VerticalAlignment="Top" RenderTransformOrigin="-0.463,0.017" Width="91" Click="Edit_Click"/>
+        <Label Content="Логін:" HorizontalAlignment="Left" Margin="18,292,0,0" Grid.Row="1" VerticalAlignment="Top" RenderTransformOrigin="0.132,-0.039"/>
+        <TextBox x:Name="textEditLogin" HorizontalAlignment="Left" Margin="60,296,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" />
+        <Label Content="Пароль:" HorizontalAlignment="Left" Margin="185,292,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <TextBox x:Name="textEditPassword" HorizontalAlignment="Left" Margin="244,296,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Роль:" HorizontalAlignment="Left" Margin="369,292,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <ComboBox x:Name="comboBoxEditRole" Margin="413,294,255,0" Grid.Row="1" ItemsSource="{Binding Roles}" DisplayMemberPath="Names" SelectedValuePath="Id" SelectedValue="{Binding SelectRole}" Height="22" VerticalAlignment="Top"/>
     </Grid>
 </Page>
