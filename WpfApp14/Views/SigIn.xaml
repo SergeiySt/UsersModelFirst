@@ -17,7 +17,7 @@
                         <TextBlock Text="Пароль:" FontSize="22"/>
                         <!--<TextBox x:Name="password" />-->
                         <PasswordBox x:Name="password4" PasswordChar="•" FontSize="22"/>
-                    <Button Content="SigIn" Width="80" Height="36" Margin="0 20 0 0" Click="SinIn_btn_click" FontSize="22"/>
+                        <Button Content="Увійти" Width="80" Height="36" Margin="0 20 0 0" Click="SinIn_btn_click" FontSize="22"/>
                     </StackPanel>
                 </Grid>
             </Page>
