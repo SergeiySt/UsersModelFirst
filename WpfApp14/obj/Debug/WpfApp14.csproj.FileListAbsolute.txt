@@ -52,3 +52,5 @@ D:\ДЗ_Шаг\Windows Forms C#\GitHub\UsersModelFirst\WpfApp14\obj\Debug\WpfApp
 D:\ДЗ_Шаг\Windows Forms C#\GitHub\UsersModelFirst\WpfApp14\obj\Debug\WpfApp14.csproj.CopyComplete
 D:\ДЗ_Шаг\Windows Forms C#\GitHub\UsersModelFirst\WpfApp14\obj\Debug\WpfApp14.exe
 D:\ДЗ_Шаг\Windows Forms C#\GitHub\UsersModelFirst\WpfApp14\obj\Debug\WpfApp14.pdb
+D:\ДЗ_Шаг\Windows Forms C#\GitHub\UsersModelFirst\WpfApp14\obj\Debug\RegistrationUsers.g.cs
+D:\ДЗ_Шаг\Windows Forms C#\GitHub\UsersModelFirst\WpfApp14\obj\Debug\RegistrationUsers.baml
