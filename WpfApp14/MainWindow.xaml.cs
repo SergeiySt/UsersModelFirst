@@ -32,6 +32,7 @@ namespace WpfApp14
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             AppData.db.Dispose();
+            Application.Current.Shutdown();
         }
     }
 }

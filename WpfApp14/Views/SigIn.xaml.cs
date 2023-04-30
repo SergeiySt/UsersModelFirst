@@ -25,7 +25,6 @@ namespace WpfApp14.Views
         {
             InitializeComponent();
         }
-
         private void SinIn_btn_click(object sender, RoutedEventArgs e)
         {
             string password = new System.Net.NetworkCredential(string.Empty, password4.SecurePassword).Password;
@@ -39,12 +38,12 @@ namespace WpfApp14.Views
                 }
                 else
                 {
-                    MessageBox.Show("Ты не админ или гуляй!");
+                    MessageBox.Show("Ти не адмін чи гуляй!");
                 }
             }
             else
             {
-                MessageBox.Show("Нет таких пользователей");
+                MessageBox.Show("Немає таких користувачів");
             }
         }
     }
