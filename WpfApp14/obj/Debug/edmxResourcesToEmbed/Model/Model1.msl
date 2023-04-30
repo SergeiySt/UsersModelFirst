@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище Financial_conditionModelContainer" CdmEntityContainer="Financial_conditionEntities">
+    <EntitySetMapping Name="Enterprise">
+      <EntityTypeMapping TypeName="Financial_conditionModel.Enterprise">
+        <MappingFragment StoreEntitySet="Enterprise">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="Financial_conditionModel.Roles">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Names" ColumnName="Names" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="Financial_conditionModel.Users">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RolesId" ColumnName="RolesId" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Financial_Indicators">
+      <EntityTypeMapping TypeName="Financial_conditionModel.Financial_Indicators">
+        <MappingFragment StoreEntitySet="Financial_Indicators">
+          <ScalarProperty Name="EnterpriseId" ColumnName="EnterpriseId" />
+          <ScalarProperty Name="AnalisysDate" ColumnName="AnalisysDate" />
+          <ScalarProperty Name="PropertyStatus" ColumnName="PropertyStatus" />
+          <ScalarProperty Name="FinancialStability" ColumnName="FinancialStability" />
+          <ScalarProperty Name="LiquidityAndSolvency" ColumnName="LiquidityAndSolvency" />
+          <ScalarProperty Name="BusinessActivity" ColumnName="BusinessActivity" />
+          <ScalarProperty Name="Profitability" ColumnName="Profitability" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

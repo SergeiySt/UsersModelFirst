@@ -1,0 +1,304 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище Financial_conditionModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Enterprise">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="800" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "Financial_condition.dbo.Financial_Indicators" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Financial_Indicators">
+          <Key>
+            <PropertyRef Name="EnterpriseId" />
+            <PropertyRef Name="AnalisysDate" />
+            <PropertyRef Name="PropertyStatus" />
+            <PropertyRef Name="FinancialStability" />
+            <PropertyRef Name="LiquidityAndSolvency" />
+            <PropertyRef Name="BusinessActivity" />
+            <PropertyRef Name="Profitability" />
+          </Key>
+          <Property Name="EnterpriseId" Type="int" Nullable="false" />
+          <Property Name="AnalisysDate" Type="datetime" Nullable="false" />
+          <Property Name="PropertyStatus" Type="float" Nullable="false" />
+          <Property Name="FinancialStability" Type="float" Nullable="false" />
+          <Property Name="LiquidityAndSolvency" Type="float" Nullable="false" />
+          <Property Name="BusinessActivity" Type="float" Nullable="false" />
+          <Property Name="Profitability" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Names" Type="nvarchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RolesId" Type="int" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Enterpris__UserI__3E52440B">
+          <End Role="Users" Type="Self.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Enterprise" Type="Self.Enterprise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Enterprise">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Financial__Enter__403A8C7D">
+          <End Role="Enterprise" Type="Self.Enterprise" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Financial_Indicators" Type="Self.Financial_Indicators" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Enterprise">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Financial_Indicators">
+              <PropertyRef Name="EnterpriseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Users__RolesId__3A81B327">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="RolesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище Financial_conditionModelContainer">
+          <EntitySet Name="Enterprise" EntityType="Self.Enterprise" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Financial_Indicators" EntityType="Self.Financial_Indicators" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Financial_Indicators].[EnterpriseId] AS [EnterpriseId], 
+    [Financial_Indicators].[AnalisysDate] AS [AnalisysDate], 
+    [Financial_Indicators].[PropertyStatus] AS [PropertyStatus], 
+    [Financial_Indicators].[FinancialStability] AS [FinancialStability], 
+    [Financial_Indicators].[LiquidityAndSolvency] AS [LiquidityAndSolvency], 
+    [Financial_Indicators].[BusinessActivity] AS [BusinessActivity], 
+    [Financial_Indicators].[Profitability] AS [Profitability]
+    FROM [dbo].[Financial_Indicators] AS [Financial_Indicators]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__Enterpris__UserI__3E52440B" Association="Self.FK__Enterpris__UserI__3E52440B">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Enterprise" EntitySet="Enterprise" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Financial__Enter__403A8C7D" Association="Self.FK__Financial__Enter__403A8C7D">
+            <End Role="Enterprise" EntitySet="Enterprise" />
+            <End Role="Financial_Indicators" EntitySet="Financial_Indicators" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Users__RolesId__3A81B327" Association="Self.FK__Users__RolesId__3A81B327">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Financial_conditionModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Enterprise">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="800" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__Enterpris__UserI__3E52440B" FromRole="Enterprise" ToRole="Users" />
+          <NavigationProperty Name="Financial_Indicators" Relationship="Self.FK__Financial__Enter__403A8C7D" FromRole="Enterprise" ToRole="Financial_Indicators" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Names" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__Users__RolesId__3A81B327" FromRole="Roles" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RolesId" Type="Int32" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Enterprise" Relationship="Self.FK__Enterpris__UserI__3E52440B" FromRole="Users" ToRole="Enterprise" />
+          <NavigationProperty Name="Roles" Relationship="Self.FK__Users__RolesId__3A81B327" FromRole="Users" ToRole="Roles" />
+        </EntityType>
+        <EntityType Name="Financial_Indicators">
+          <Key>
+            <PropertyRef Name="EnterpriseId" />
+            <PropertyRef Name="AnalisysDate" />
+            <PropertyRef Name="PropertyStatus" />
+            <PropertyRef Name="FinancialStability" />
+            <PropertyRef Name="LiquidityAndSolvency" />
+            <PropertyRef Name="BusinessActivity" />
+            <PropertyRef Name="Profitability" />
+          </Key>
+          <Property Name="EnterpriseId" Type="Int32" Nullable="false" />
+          <Property Name="AnalisysDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PropertyStatus" Type="Double" Nullable="false" />
+          <Property Name="FinancialStability" Type="Double" Nullable="false" />
+          <Property Name="LiquidityAndSolvency" Type="Double" Nullable="false" />
+          <Property Name="BusinessActivity" Type="Double" Nullable="false" />
+          <Property Name="Profitability" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Enterprise" Relationship="Self.FK__Financial__Enter__403A8C7D" FromRole="Financial_Indicators" ToRole="Enterprise" />
+        </EntityType>
+        <Association Name="FK__Enterpris__UserI__3E52440B">
+          <End Role="Users" Type="Self.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Enterprise" Type="Self.Enterprise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Enterprise">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Financial__Enter__403A8C7D">
+          <End Role="Enterprise" Type="Self.Enterprise" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Financial_Indicators" Type="Self.Financial_Indicators" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Enterprise">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Financial_Indicators">
+              <PropertyRef Name="EnterpriseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Users__RolesId__3A81B327">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="RolesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Financial_conditionEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Enterprise" EntityType="Self.Enterprise" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <EntitySet Name="Financial_Indicators" EntityType="Self.Financial_Indicators" />
+          <AssociationSet Name="FK__Enterpris__UserI__3E52440B" Association="Self.FK__Enterpris__UserI__3E52440B">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Enterprise" EntitySet="Enterprise" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Financial__Enter__403A8C7D" Association="Self.FK__Financial__Enter__403A8C7D">
+            <End Role="Enterprise" EntitySet="Enterprise" />
+            <End Role="Financial_Indicators" EntitySet="Financial_Indicators" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Users__RolesId__3A81B327" Association="Self.FK__Users__RolesId__3A81B327">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище Financial_conditionModelContainer" CdmEntityContainer="Financial_conditionEntities">
+          <EntitySetMapping Name="Enterprise">
+            <EntityTypeMapping TypeName="Financial_conditionModel.Enterprise">
+              <MappingFragment StoreEntitySet="Enterprise">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="Financial_conditionModel.Roles">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Names" ColumnName="Names" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="Financial_conditionModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="RolesId" ColumnName="RolesId" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Financial_Indicators">
+            <EntityTypeMapping TypeName="Financial_conditionModel.Financial_Indicators">
+              <MappingFragment StoreEntitySet="Financial_Indicators">
+                <ScalarProperty Name="EnterpriseId" ColumnName="EnterpriseId" />
+                <ScalarProperty Name="AnalisysDate" ColumnName="AnalisysDate" />
+                <ScalarProperty Name="PropertyStatus" ColumnName="PropertyStatus" />
+                <ScalarProperty Name="FinancialStability" ColumnName="FinancialStability" />
+                <ScalarProperty Name="LiquidityAndSolvency" ColumnName="LiquidityAndSolvency" />
+                <ScalarProperty Name="BusinessActivity" ColumnName="BusinessActivity" />
+                <ScalarProperty Name="Profitability" ColumnName="Profitability" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
