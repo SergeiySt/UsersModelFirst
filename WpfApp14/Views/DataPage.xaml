@@ -7,6 +7,7 @@
       mc:Ignorable="d" 
       Loaded="Page_loaded"
       d:DesignHeight="450" d:DesignWidth="800"
+        
       Title="DataPage">
 
     <Grid Background="Wheat">
@@ -20,7 +21,7 @@
                    VerticalAlignment="Center"
                    HorizontalAlignment="Center">
             <TextBlock Text="Найти: " FontSize="16"/>
-            <TextBox Width="300" FontSize="16"/>
+            <TextBox Width="300" FontSize="16" x:Name ="textBoxFind"/>
         </StackPanel>
         <Button Height="20" Width="100" HorizontalAlignment="Left" Margin="20 0 0 0 " Content="Back" Click="Back_btn_click"/>
 
@@ -33,10 +34,8 @@
                 <DataGridTextColumn Header="Roles" Width="*" Binding="{Binding Roles.Names}"/>
             </DataGrid.Columns>
         </DataGrid>
-
-
-        <StackPanel Grid.Row="2">
-            <Button Height="20" Width="100"  HorizontalAlignment="Center" Margin="20 10 0 0 " Content="Delite" Click="Delite_btn_click"/>
-        </StackPanel>
+        <Button Content="Delete" Click="Delite_btn_click" Margin="350,8,350,0" Grid.Row="2" Height="20" VerticalAlignment="Top"/>
+        <Button Content="Add users" Margin="47,8,653,0" Grid.Row="2" Height="20" VerticalAlignment="Top" Click="Add_Click"/>
+        <Button Content="Зберегти зміни" HorizontalAlignment="Left" Margin="699,8,0,0" Grid.Row="2" VerticalAlignment="Top" RenderTransformOrigin="-0.463,0.017" Width="91" Click="Save_Click"/>
     </Grid>
 </Page>

@@ -6,17 +6,17 @@
       xmlns:local="clr-namespace:WpfApp14.Views"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="SigIn">
+      Title="SigIn" >
 
-    <Grid Background="Wheat">
-        <StackPanel HorizontalAlignment="Center"
+                <Grid Background="Wheat">
+                    <StackPanel HorizontalAlignment="Center"
                     Width="200"
                     VerticalAlignment="Center">
-            <TextBlock Text="Login:"/>
-            <TextBox x:Name="login"/>
-            <TextBlock Text="Password:"/>
-            <TextBox x:Name="password"/>
-            <Button Content="SigIn" Width="80" Height="20" Margin="0 20 0 0" Click="SinIn_btn_click"/>
-        </StackPanel>
-    </Grid>
-</Page>
+                        <TextBlock Text="Login:"/>
+                        <TextBox x:Name="login"/>
+                        <TextBlock Text="Password:"/>
+                        <TextBox x:Name="password"/>
+                        <Button Content="SigIn" Width="80" Height="20" Margin="0 20 0 0" Click="SinIn_btn_click"/>
+                    </StackPanel>
+                </Grid>
+            </Page>

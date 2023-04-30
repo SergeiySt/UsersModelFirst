@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Uchiha322\source\repos\WpfApp14\obj\Debug\
+D:\ДЗ_Шаг\Windows Forms C#\GitHub\UsersModelFirst\WpfApp14\obj\Debug\
 WpfApp14
 none
 false
 DEBUG;TRACE
-C:\Users\Uchiha322\source\repos\WpfApp14\App.xaml
-3-422514182
+D:\ДЗ_Шаг\Windows Forms C#\GitHub\UsersModelFirst\WpfApp14\App.xaml
+4-938240845
 2739969757
-16604963049
-18-1189262061
-MainWindow.xaml;Views\DataPage.xaml;Views\SigIn.xaml;
+17937170540
+181083196317
+MainWindow.xaml;RegistrationUsers.xaml;Views\DataPage.xaml;Views\SigIn.xaml;
 
 True
 
