@@ -11,12 +11,13 @@
                 <Grid Background="Wheat">
                     <StackPanel HorizontalAlignment="Center"
                     Width="200"
-                    VerticalAlignment="Center">
-                        <TextBlock Text="Login:"/>
-                        <TextBox x:Name="login"/>
-                        <TextBlock Text="Password:"/>
-                        <TextBox x:Name="password"/>
-                        <Button Content="SigIn" Width="80" Height="20" Margin="0 20 0 0" Click="SinIn_btn_click"/>
+                    VerticalAlignment="Center" Height="196">
+                        <TextBlock Text="Логін:" FontSize="22"/>
+                        <TextBox x:Name="login" FontSize="22"/>
+                        <TextBlock Text="Пароль:" FontSize="22"/>
+                        <!--<TextBox x:Name="password" />-->
+                        <PasswordBox x:Name="password4" PasswordChar="•" FontSize="22"/>
+                    <Button Content="SigIn" Width="80" Height="36" Margin="0 20 0 0" Click="SinIn_btn_click" FontSize="22"/>
                     </StackPanel>
                 </Grid>
             </Page>

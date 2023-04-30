@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfApp14.Model;
 using WpfApp14.Views;
 
 namespace WpfApp14
@@ -26,6 +27,11 @@ namespace WpfApp14
             InitializeComponent();
 
             MainFrame.Navigate(new SigIn());
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            AppData.db.Dispose();
         }
     }
 }

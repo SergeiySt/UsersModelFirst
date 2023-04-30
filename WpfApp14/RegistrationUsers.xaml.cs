@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Xml.Linq;
 using WpfApp14.Model;
 using WpfApp14.Views;
 using static WpfApp14.Views.DataPage;
@@ -38,6 +39,12 @@ namespace WpfApp14
 
         private void buttonRegister_Click(object sender, RoutedEventArgs e)
         {
+            if (!AddUser())
+            {
+                MessageBox.Show("Заповніть всі поля!", "Примітка", MessageBoxButton.OK, MessageBoxImage.Information);
+                return;
+            }
+
             string Login = login.Text;
             string Password = password2.Text;
             int roleId = (int)comboboxRole.SelectedValue;
@@ -60,10 +67,18 @@ namespace WpfApp14
                 db.Users.Add(users);
                 db.SaveChanges();
             }
+
             login.Text = " ";
             password2.Text = " ";
+            comboboxRole.SelectedIndex = -1;
 
             OnUserRegistered();
+        }
+        private bool AddUser()
+        {
+            return !string.IsNullOrEmpty(login.Text)
+                 && !string.IsNullOrEmpty(password2.Text)
+                 && comboboxRole.SelectedValue != null;
         }
     }
 }

@@ -28,7 +28,8 @@ namespace WpfApp14.Views
 
         private void SinIn_btn_click(object sender, RoutedEventArgs e)
         {
-            var CurrentUser = AppData.db.Users.FirstOrDefault(u => u.Login == login.Text && u.Password == password.Text);
+            string password = new System.Net.NetworkCredential(string.Empty, password4.SecurePassword).Password;
+            var CurrentUser = AppData.db.Users.FirstOrDefault(u => u.Login == login.Text && u.Password == password);
             
             if(CurrentUser != null)
             {
